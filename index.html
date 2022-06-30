@@ -21,12 +21,13 @@
                 <option v-for="answer in myQuiz[questionIndex].answers">{{ answer.text }}</option>
             </select>
             <button @click="previousQuestion()" v-if="questionIndex > 0">Previous Question</button>
-            <button v-show="areAllQuestionsAnswered" @click="setPage('score-page')">Submit Answer</button>
+            <button v-show="areAllQuestionsAnswered" @click="setPage('score-page'), calculateScore()">Submit Answer</button>
             <button @click="nextQuestion();" v-if="questionIndex + 1 < myQuiz.length">Next Question</button>
         </div>
         <!-- Score page -->
         <div id="score-page" v-show="currentPage == 'score-page'">
-            <h2>Score</h2>
+            <h1>Score</h1>
+            <h2>{{ score }} / {{ myQuiz.length }}</h2>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>

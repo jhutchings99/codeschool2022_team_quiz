@@ -5,23 +5,56 @@
 var QUIZ = [
     {
         title: "Question 1",
-        questionText: "What is the 3rd letter in the alphabet?",
+        questionText: "What is the 1st letter in the alphabet?",
         answers: [
-            { text: "a", correct: false },
+            { text: "a", correct: true },
             { text: "b", correct: false },
-            { text: "c", correct: true },
+            { text: "c", correct: false },
             { text: "d", correct: false }
         ],
         userAnswer: ""
     },
     {
         title: "Question 2",
-        questionText: "How many licks to the center of a tootsie pop?",
+        questionText: "How to increment by 1 in JavaScript?",
         answers: [
-            { text: "3", correct: true },
-            { text: "682", correct: false },
-            { text: "841", correct: false },
-            { text: "1000", correct: false },
+            { text: "+++", correct: false },
+            { text: "+", correct: false },
+            { text: "++", correct: true },
+            { text: "bigify", correct: false },
+        ],
+        userAnswer: ""
+    },
+    {
+        title: "Question 3",
+        questionText: "Who is the best teacher in Code School?",
+        answers: [
+            { text: "Jace", correct: false },
+            { text: "Derek", correct: false },
+            { text: "DJ", correct: false },
+            { text: "All of the above", correct: true },
+        ],
+        userAnswer: ""
+    },
+    {
+        title: "Question 4",
+        questionText: "Who is the best sponsor of code school?",
+        answers: [
+            { text: "TCN", correct: false },
+            { text: "Stephen Wade", correct: false },
+            { text: "Zonos", correct: true },
+            { text: "SciTools", correct: false },
+        ],
+        userAnswer: ""
+    },
+    {
+        title: "Question 5",
+        questionText: "What is my favorite color?",
+        answers: [
+            { text: "green", correct: true },
+            { text: "red", correct: false },
+            { text: "orange", correct: false },
+            { text: "blue", correct: false },
         ],
         userAnswer: ""
     }
@@ -57,8 +90,8 @@ var app = new Vue({
             this.myQuiz.forEach(question => {
                 question.answers.forEach(answer => {
                     if (answer.correct) {
-                        if (userAnswer == answer.text) {
-                            score++
+                        if (question.userAnswer == answer.text) {
+                            this.score++
                         }
                     }
                 })
