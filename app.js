@@ -1,4 +1,4 @@
-/*
+
 
 // Example quiz object might look like:
 
@@ -27,24 +27,30 @@ var QUIZ = [
     }
 ]
 
-*/
-
 
 
 var app = new Vue({
     el: "#app",
     data:{
         // to attach your global quiz variable to a data variable:
-        // myQuiz: QUIZ,
+        myQuiz: QUIZ,
+        currentPage: "title-page",
+        questionIndex: 0,
     },
     methods:{
         // used for showing questions individually
-        nextQuestion : function () {},
+        nextQuestion : function () {
+            this.questionIndex++;
+        },
 
         // used for showing questions individually
-        previousQuestion : function () {},
+        previousQuestion : function () {
+            this.questionIndex--;
+        },
 
-        setPage: function (page) {},
+        setPage: function (page) {
+            this.currentPage = page
+        },
         
         calculateScore: function () {}
     },

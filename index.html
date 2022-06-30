@@ -8,10 +8,24 @@
         <h1>Multiple Choice Quiz</h1>
 
         <!-- Title page -->
-        
+        <div id="title-page" v-show="currentPage == 'title-page'">
+            <button @click="setPage('quiz-page')">Start Quiz</button>
+        </div>
         <!-- Quiz page -->
-
+        <div id="quiz-page" v-show="currentPage == 'quiz-page'">
+            <h3>{{ myQuiz[questionIndex].title }}</h3>
+            <p>{{ myQuiz[questionIndex].questionText }}</p>
+            <select v-model="myQuiz[questionIndex].userAnswer">
+                <option v-for="answer in myQuiz[questionIndex].answers">{{ answer.text }}</option>
+            </select>
+            <button @click="previousQuestion()" v-if="questionIndex > 0">Previous Question</button>
+            <button @click="">Submit Answer</button>
+            <button @click="nextQuestion();" v-if="questionIndex + 1 < myQuiz.length">Next Question</button>
+        </div>
         <!-- Score page -->
+        <div id="score-page" v-show="currentPage == 'score-page'">
+
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
     <script src="app.js"></script>
