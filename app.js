@@ -7,10 +7,10 @@ var QUIZ = [
         title: "Question 1",
         questionText: "What is the 3rd letter in the alphabet?",
         answers: [
-            {text: "a", correct: false},
-            {text: "b", correct: false},
-            {text: "c", correct: true},
-            {text: "d", correct: false}
+            { text: "a", correct: false },
+            { text: "b", correct: false },
+            { text: "c", correct: true },
+            { text: "d", correct: false }
         ],
         userAnswer: ""
     },
@@ -18,10 +18,10 @@ var QUIZ = [
         title: "Question 2",
         questionText: "How many licks to the center of a tootsie pop?",
         answers: [
-            {text: "3", correct: true},
-            {text: "682", correct: false},
-            {text: "841", correct: false},
-            {text: "1000", correct: false},
+            { text: "3", correct: true },
+            { text: "682", correct: false },
+            { text: "841", correct: false },
+            { text: "1000", correct: false },
         ],
         userAnswer: ""
     }
@@ -31,32 +31,52 @@ var QUIZ = [
 
 var app = new Vue({
     el: "#app",
-    data:{
+    data: {
         // to attach your global quiz variable to a data variable:
         myQuiz: QUIZ,
         currentPage: "title-page",
         questionIndex: 0,
+        score: 0,
     },
-    methods:{
+    methods: {
         // used for showing questions individually
-        nextQuestion : function () {
+        nextQuestion: function () {
             this.questionIndex++;
         },
 
         // used for showing questions individually
-        previousQuestion : function () {
+        previousQuestion: function () {
             this.questionIndex--;
         },
 
         setPage: function (page) {
             this.currentPage = page
         },
-        
-        calculateScore: function () {}
+
+        calculateScore: function () {
+            this.myQuiz.forEach(question => {
+                question.answers.forEach(answer => {
+                    if (answer.correct) {
+                        if (userAnswer == answer.text) {
+                            score++
+                        }
+                    }
+                })
+            })
+        }
     },
     computed: {
         // a function that returns true if 0 userAnswer fields are blank ("")
         // IF there is still 1 or more blank ("") userAnswer field, return false
-        areAllQuestionsAnswered: function () {}
+        areAllQuestionsAnswered: function () {
+            let unanswered = 0;
+            this.myQuiz.forEach(question => {
+                if (question.userAnswer == "" || !question.userAnswer) {
+                    unanswered++
+                }
+            });
+
+            return unanswered == 0;
+        }
     }
 });

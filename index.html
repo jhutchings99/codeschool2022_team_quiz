@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Multiple Choice Quiz</title>
 </head>
+
 <body>
     <div id="app">
         <h1>Multiple Choice Quiz</h1>
@@ -19,15 +21,16 @@
                 <option v-for="answer in myQuiz[questionIndex].answers">{{ answer.text }}</option>
             </select>
             <button @click="previousQuestion()" v-if="questionIndex > 0">Previous Question</button>
-            <button @click="">Submit Answer</button>
+            <button v-show="areAllQuestionsAnswered" @click="setPage('score-page')">Submit Answer</button>
             <button @click="nextQuestion();" v-if="questionIndex + 1 < myQuiz.length">Next Question</button>
         </div>
         <!-- Score page -->
         <div id="score-page" v-show="currentPage == 'score-page'">
-
+            <h2>Score</h2>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
     <script src="app.js"></script>
 </body>
+
 </html>
