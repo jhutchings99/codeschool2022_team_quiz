@@ -57,3 +57,19 @@
     cursor: pointer;
     border-radius: 50px;
 }
+
+#title-page button {
+    font-size: 1.2rem;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    background-color: #00bcd4;
+    color: white;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: 0.5s;
+}
+
+#title-page button:hover {
+    box-shadow: 0px 5px 0px black;
+}
